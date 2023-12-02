@@ -15,7 +15,10 @@ def mainLoop():
         while userInput == '':
             userInput = input("Enter Input > ")
         sock.send(userInput)
-        
+        if userInput == '/q':
+            sock.close()
+            break
+
         response = sock.receive()
         # Handle the servers response
         print(f"{response}")

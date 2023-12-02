@@ -32,3 +32,6 @@ class GameSocket:
         msgLen = int(msgLen)
         
         return str(self.sock.recv(msgLen), 'utf-8')
+    
+    def close(self):
+        self.sock.close()

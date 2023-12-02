@@ -13,6 +13,9 @@ def mainLoop():
     game = None
     while True:
         input = sock.receive()
+        if input == '/q':
+            sock.close()
+            break
         
         if game != None:
             (gameOver, msg) = game.choice(input)
