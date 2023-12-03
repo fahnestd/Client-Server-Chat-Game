@@ -7,6 +7,7 @@ class GameSocket:
     def __init__(self, sock):
         self.sock = sock
 
+    # Sets up as a server for listening
     def initServer(self):
         self.sock.bind(('localhost', 12525))
         self.sock.listen(1)
@@ -14,9 +15,11 @@ class GameSocket:
         self.sock = clientsocket
         self.clientaddress = clientaddress
 
+    # Sets up as a client and connects to a server
     def initClient(self):
         self.sock.connect(('localhost', 12525))
 
+    # Sends a message efficiently using dynamic message lengths
     def send(self, msg):
         msgLen = bytes(f"{len(msg)}".zfill(4), 'utf-8')
         self.sock.send(msgLen)
@@ -25,6 +28,7 @@ class GameSocket:
         if sent == 0:
             raise RuntimeError("socket connection broken")
 
+    # Recieves a message utilizing the msg length
     def receive(self):
         msgLen = self.sock.recv(4)
         if msgLen == b'':
@@ -33,5 +37,6 @@ class GameSocket:
         
         return str(self.sock.recv(msgLen), 'utf-8')
     
+    # Closes the socket
     def close(self):
         self.sock.close()

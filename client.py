@@ -9,12 +9,14 @@ print("Successfully connected to server!")
 print("Enter command 'game' to start a game!")
 
 def mainLoop():
-    
     while True:
         userInput = ''
+        # Recursivly get input until user enters something
         while userInput == '':
             userInput = input("Enter Input > ")
         sock.send(userInput)
+
+        # Handle the user issuing the quit command
         if userInput == '/q':
             sock.close()
             break

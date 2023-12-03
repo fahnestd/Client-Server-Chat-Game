@@ -102,7 +102,6 @@ class Game:
            /|\  |
            / \  |
                ===''']
-        
         return HANGMAN_PICS[self.getWrongGuessCount()]
     
     def getWrongGuessCount(self):
