@@ -1,5 +1,4 @@
 import random
-import re
 
 # Citation: https://inventwithpython.com/invent4thed/chapter8.html
 # Adapted some of the code and used the ascii images of hangman.
